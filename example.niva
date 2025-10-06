@@ -1,0 +1,35 @@
+"hello world!" echo
+
+type Person name: String age: Int
+
+union User = 
+  | LoggedIn name: String
+  | Guest
+
+person = Person name: "John" age: 6
+
+
+Person haveBirthday = age <- age + 1
+
+person haveBirthday
+
+1 to: 3 do: [ it echo ]
+
+true => "true" echo
+
+User getName = | this
+  | Guest => "Guest" echo
+  | LoggedIn => name echo
+
+list = { 1 2 3 }
+list add: 4
+
+mappedList = list map: [ it toString + "a" ]
+
+map = #{ 1 "a" 2 "b" }
+map at: 3 put: "c"
+
+a = map at: 1
+a != null => a echo
+
+// comment

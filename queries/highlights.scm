@@ -1,0 +1,11 @@
+(keyword) @keyword
+(operator) @operator
+(explicit_type) @type
+(type) @type
+(fn_call) @function
+(annotation) @attribute
+(block) @operator
+(identifier) @variable
+(number) @number
+(string) @string
+(comment) @comment
