@@ -1,12 +1,12 @@
 {
   "name": "tree-sitter-niva",
   "version": "0.1.0",
-  "description": "A parser for the Smalltalk-like programming language Niva",
+  "description": "niva grammar for tree-sitter",
   "repository": "https://github.com/tree-sitter/tree-sitter-niva",
   "license": "MIT",
   "author": {
-    "name": "Nadelio",
-    "email": "carefulsniffle@gmail.com"
+    "name": "gavr",
+    "email": "qwf"
   },
   "main": "bindings/node",
   "types": "bindings/node",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.22.4",
-    "tree-sitter-cli": "^0.25.9"
+    "tree-sitter-cli": "^0.25.10"
   },
   "peerDependencies": {
     "tree-sitter": "^0.22.4"

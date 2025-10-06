@@ -9,4 +9,4 @@ class TestLanguage(TestCase):
         try:
             Parser(Language(tree_sitter_niva.language()))
         except Exception:
-            self.fail("Error loading Niva grammar")
+            self.fail("Error loading niva grammar")

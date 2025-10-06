@@ -1,6 +1,6 @@
 /**
- * @file A parser for the Smalltalk-like programming language Niva
- * @author Nadelio <carefulsniffle@gmail.com>
+ * @file niva grammar for tree-sitter
+ * @author gavr <qwf>
  * @license MIT
  */
 
@@ -13,15 +13,25 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($._expression),
     
-    _expression: $ => choice(explicit_type, type, fn_call, operator, keyword, block, number, string),
+    _expression: $ => choice($.keywords, $._identifier_like, $.control_flow, $.operator, $._comment_like,  $._number_like, $._string_like, $.block),
     
+    _string_like: $ => choice($.string, $.char, $.multi_string),
+    _number_like: $ => choice($.number, $.float, $.double),
+    
+    _comment_like: $ => choice($.comment, $.doc_comment),
+    
+    _identifier_like: $ => choice($.type_name, $.identifier, $.explicit_type, $.keyword_send, $.annotation),
+    
+    type_name: $ => /[A-Z][a-zA-Z_\-]*/,
+    identifier: $ => /[a-z_][a-zA-Z_\-]*/,
     explicit_type: $ => seq($.identifier, '::'),
-    type: $ => /[A-Z][a-zA-Z_\-]*/,
-    fn_call: $ => seq($.identifier, ':'),
+    keyword_send: $ => seq($.identifier, ':'),
+    annotation: $ => seq('@', $.identifier),
     
-    operator: $ => choice(">", "<", "=", "~", "/", "+", "-", "_", "*", "?", "@", "==", "!=", ">=", "<=", "+=", "-=", "/=", "*=", "**=", "!", "%", "&", "^", ">>", "<<", ".", ",", ";", "|", "|=>", "=>", "|>", "^"),
-
-    keyword: $ => choice(
+    operator: $ => choice(">", "<", ">=", "<=", "=", "+", "-", "*", "/", "==", "!=", "%", "."),
+    control_flow: $ => choice("|", "|=>", "=>", "|>", ",", ";", "?", "!", "^", "&&", "||"),
+    
+    keywords: $ => choice(
       'false',
       'true',
       'union',
@@ -40,18 +50,25 @@ module.exports = grammar({
       'on'
     ),
 
-    annotation: $ => seq('@', identifier)
 
     block: $ => choice(
-      seq('[', repeat($._expression), ']'),
-      seq('#{', repeat($._expression), '}'),
+      seq('[', repeat($._expression), ']'),  // code block
+      seq('#{', repeat($._expression), '}'), // hash map
       seq('{', repeat($._expression), '}'),
       seq('(', repeat($._expression), ')'),
-    )
+      seq('#(', repeat($._expression), ')'),  // hash set
+    ),
 
-    identifier: $ => /[a-zA-Z_][a-zA-Z_\-]*/,
+    
     number: $ => /\d+/,
-    string: $ => /\".*\"/
-    comment: $ => /\/\/.*/
+    double: $ => /\d+\.\d+/,
+    float: $ => /\d+\.\d+f/,
+    
+    string: $ => /".*"/,
+    char: $ => /'.*'/,
+    multi_string: $ => /""".*"""/,
+    
+    comment: $ => /\/\/.*/,
+    doc_comment: $ => /\/\/\/.*/
   }
 });
