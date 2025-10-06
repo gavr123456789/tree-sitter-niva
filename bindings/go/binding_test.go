@@ -10,6 +10,6 @@ import (
 func TestCanLoadGrammar(t *testing.T) {
 	language := tree_sitter.NewLanguage(tree_sitter_niva.Language())
 	if language == nil {
-		t.Errorf("Error loading Niva grammar")
+		t.Errorf("Error loading niva grammar")
 	}
 }

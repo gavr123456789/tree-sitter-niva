@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-niva
         VERSION "0.1.0"
-        DESCRIPTION "A parser for the Smalltalk-like programming language Niva"
+        DESCRIPTION "niva grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-niva"
         LANGUAGES C)
 

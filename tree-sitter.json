@@ -3,25 +3,24 @@
   "grammars": [
     {
       "name": "niva",
-      "camelcase": "Niva",
+      "camelcase": "niva",
+      "title": "niva",
       "scope": "source.niva",
       "file-types": [
         "niva"
       ],
-      "highlights": "queries/highlights.scm",
-      "tags": "queries/tags.scm",
-      "injection-regex": "niva",
-      "class-name": "TreeSitterNiva"
+      "injection-regex": "^niva$",
+      "class-name": "TreeSitterniva"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "A parser for the Smalltalk-like programming language, Niva",
+    "description": "niva grammar for tree-sitter",
     "authors": [
       {
-        "name": "Nadelio",
-        "email": "carefulsniffle@gmail.com"
+        "name": "gavr",
+        "email": "qwf"
       }
     ],
     "links": {
@@ -34,6 +33,7 @@
     "node": true,
     "python": true,
     "rust": true,
-    "swift": true
+    "swift": true,
+    "zig": false
   }
 }
