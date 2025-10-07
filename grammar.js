@@ -22,8 +22,8 @@ module.exports = grammar({
     
     _identifier_like: $ => choice($.type_name, $.identifier, $.explicit_type, $.keyword_send, $.annotation),
     
-    type_name: $ => /[A-Z][a-zA-Z_\-]*/,
-    identifier: $ => /[a-z_][a-zA-Z_\-]*/,
+    type_name: $ => /[A-Z][a-zA-Z0-9_\-]*/,
+    identifier: $ => /[a-z_][a-zA-Z0-9_\-]*/,
     explicit_type: $ => seq($.identifier, '::'),
     keyword_send: $ => seq($.identifier, ':'),
     annotation: $ => seq('@', $.identifier),
