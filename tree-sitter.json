@@ -6,6 +6,9 @@
       "camelcase": "niva",
       "title": "niva",
       "scope": "source.niva",
+      "highlights": [
+        "queries/highlights.scm"
+      ],
       "file-types": [
         "niva"
       ],

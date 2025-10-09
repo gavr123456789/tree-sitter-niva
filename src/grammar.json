@@ -120,11 +120,11 @@
     },
     "type_name": {
       "type": "PATTERN",
-      "value": "[A-Z][a-zA-Z_\\-]*"
+      "value": "[A-Z][a-zA-Z0-9_\\-]*"
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z_][a-zA-Z_\\-]*"
+      "value": "[a-z_][a-zA-Z0-9_\\-]*"
     },
     "explicit_type": {
       "type": "SEQ",
