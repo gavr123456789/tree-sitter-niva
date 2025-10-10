@@ -459,15 +459,15 @@
     },
     "string": {
       "type": "PATTERN",
-      "value": "\".*\""
+      "value": "\"[^\"]*\""
     },
     "char": {
       "type": "PATTERN",
-      "value": "'.*'"
+      "value": "'[^']*'"
     },
     "multi_string": {
       "type": "PATTERN",
-      "value": "\"\"\".*\"\"\""
+      "value": "\"\"\".*?\"\"\""
     },
     "comment": {
       "type": "PATTERN",
