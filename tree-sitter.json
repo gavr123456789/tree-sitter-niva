@@ -1,11 +1,12 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
       "name": "niva",
-      "camelcase": "niva",
+      "camelcase": "Niva",
       "title": "niva",
       "scope": "source.niva",
+      "path": ".",
+      "highlights": "queries/highlights.scm",
       "file-types": [
         "niva"
       ],
@@ -16,11 +17,15 @@
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "niva grammar for tree-sitter",
+    "description": "Niva grammar for tree-sitter",
     "authors": [
       {
         "name": "gavr",
         "email": "qwf"
+      },
+      {
+        "name": "Nadelio",
+        "email": "[REDACTED]"
       }
     ],
     "links": {
