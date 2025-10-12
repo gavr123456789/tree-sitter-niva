@@ -375,6 +375,10 @@
     "named": false
   },
   {
+    "type": "extend",
+    "named": false
+  },
+  {
     "type": "false",
     "named": false
   },

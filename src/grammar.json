@@ -227,6 +227,14 @@
       "members": [
         {
           "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": "<-"
+        },
+        {
+          "type": "STRING",
           "value": "|"
         },
         {
@@ -337,6 +345,10 @@
         {
           "type": "STRING",
           "value": "on"
+        },
+        {
+          "type": "STRING",
+          "value": "extend"
         }
       ]
     },
