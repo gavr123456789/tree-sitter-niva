@@ -82,6 +82,7 @@ module.exports = grammar({
         "errordomain",
         "builder",
         "on",
+        "extend",
       ),
 
     block: ($) =>
