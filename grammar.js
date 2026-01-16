@@ -77,7 +77,7 @@ module.exports = grammar({
         "new",
         "do",
         "Bind",
-        "package",
+        // "package",
         "constructor",
         "errordomain",
         "builder",
@@ -100,8 +100,8 @@ module.exports = grammar({
 
     string: ($) => /"[^"]*"/,
     char: ($) => /'[^']*'/,
-    multi_string: ($) => /""".*?"""/,
-
+    // multi_string: ($) => /""".*?"""/,
+    multi_string: ($) => /"""[^]*?"""/,
     comment: ($) => /\/\/.*/,
     doc_comment: ($) => /\/\/\/.*/,
   },
