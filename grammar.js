@@ -62,7 +62,21 @@ module.exports = grammar({
         ".",
       ),
     control_flow: ($) =>
-      choice( "=", "<-", "|", "|=>", "=>", "|>", ",", ";", "?", "!", "^", "&&", "||"),
+      choice(
+        "=",
+        "<-",
+        "|",
+        "|=>",
+        "=>",
+        "|>",
+        ",",
+        ";",
+        "?",
+        "!",
+        "^",
+        "&&",
+        "||",
+      ),
 
     keywords: ($) =>
       choice(
@@ -83,6 +97,7 @@ module.exports = grammar({
         "builder",
         "on",
         "extend",
+        "fun",
       ),
 
     block: ($) =>
