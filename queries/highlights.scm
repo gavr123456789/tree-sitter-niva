@@ -24,9 +24,15 @@
 (annotation) @attribute
 
 ; Специальные конструкции
+; sas:
 (keyword_send
-  (identifier) @namespace ;namespace(blue) function(green as string literal) Подсветка имени в keyword message
+  (identifier) @namespace
   ":" @punctuation.delimiter)
+
+; :sas
+(keyword_send
+  ":" @punctuation.delimiter
+  (identifier) @namespace)
 
 (explicit_type
   (identifier) @variable ; Подсветка имени модуля/пространства имён
