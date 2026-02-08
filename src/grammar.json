@@ -149,12 +149,15 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "PATTERN",
+                "value": "[a-z_][a-zA-Z0-9_\\-]*"
               },
               {
-                "type": "STRING",
-                "value": ":"
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "STRING",
+                  "value": ":"
+                }
               }
             ]
           },
@@ -166,8 +169,11 @@
                 "value": ":"
               },
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[a-z_][a-zA-Z0-9_\\-]*"
+                }
               }
             ]
           }
