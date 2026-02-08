@@ -291,6 +291,10 @@
     "named": false
   },
   {
+    "type": "<-",
+    "named": false
+  },
+  {
     "type": "<=",
     "named": false
   },
@@ -387,6 +391,10 @@
     "named": true
   },
   {
+    "type": "fun",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -412,10 +420,6 @@
   },
   {
     "type": "on",
-    "named": false
-  },
-  {
-    "type": "package",
     "named": false
   },
   {

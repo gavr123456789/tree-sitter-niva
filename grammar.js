@@ -32,17 +32,20 @@ module.exports = grammar({
 
     _identifier_like: ($) =>
       choice(
+        $.keyword_send,
         $.type_name,
         $.identifier,
         $.explicit_type,
-        $.keyword_send,
         $.annotation,
       ),
 
     type_name: ($) => /[A-Z][a-zA-Z0-9_\-]*/,
     identifier: ($) => /[a-z_][a-zA-Z0-9_\-]*/,
     explicit_type: ($) => seq($.identifier, "::"),
-    keyword_send: ($) => choice(seq($.identifier, ":"), seq(":", $.identifier)),
+    keyword_send: ($) => prec(1, choice(
+      seq($.identifier, ":"),
+      seq(":", $.identifier),
+    )),
     annotation: ($) => seq("@", $.identifier),
 
     operator: ($) =>
@@ -60,11 +63,9 @@ module.exports = grammar({
         "!=",
         "%",
         ".",
-        "|",
       ),
     control_flow: ($) =>
       choice(
-        "=",
         "<-",
         "|",
         "|=>",
@@ -117,7 +118,7 @@ module.exports = grammar({
     string: ($) => /"[^"]*"/,
     char: ($) => /'[^']*'/,
     // multi_string: ($) => /""".*?"""/,
-    multi_string: ($) => /"""[^]*?"""/,
+    multi_string: ($) => /"""[\s\S]*?"""/,
     comment: ($) => /\/\/.*/,
     doc_comment: ($) => /\/\/\/.*/,
   },

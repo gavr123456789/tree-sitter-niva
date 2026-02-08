@@ -98,6 +98,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "keyword_send"
+        },
+        {
+          "type": "SYMBOL",
           "name": "type_name"
         },
         {
@@ -107,10 +111,6 @@
         {
           "type": "SYMBOL",
           "name": "explicit_type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "keyword_send"
         },
         {
           "type": "SYMBOL",
@@ -140,17 +140,39 @@
       ]
     },
     "keyword_send": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "STRING",
+                "value": ":"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ":"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        ]
+      }
     },
     "annotation": {
       "type": "SEQ",
@@ -225,10 +247,6 @@
     "control_flow": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "STRING",
-          "value": "="
-        },
         {
           "type": "STRING",
           "value": "<-"
@@ -328,10 +346,6 @@
         },
         {
           "type": "STRING",
-          "value": "package"
-        },
-        {
-          "type": "STRING",
           "value": "constructor"
         },
         {
@@ -349,6 +363,10 @@
         {
           "type": "STRING",
           "value": "extend"
+        },
+        {
+          "type": "STRING",
+          "value": "fun"
         }
       ]
     },
@@ -479,7 +497,7 @@
     },
     "multi_string": {
       "type": "PATTERN",
-      "value": "\"\"\".*?\"\"\""
+      "value": "\"\"\"[\\s\\S]*?\"\"\""
     },
     "comment": {
       "type": "PATTERN",
