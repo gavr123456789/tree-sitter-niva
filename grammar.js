@@ -7,7 +7,7 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 const IDENT = /[a-z_][a-zA-Z0-9_\-]*/;
-
+const TYPE = /[A-Z][a-zA-Z0-9_\-]*/;
 module.exports = grammar({
   name: "niva",
 
@@ -40,12 +40,13 @@ module.exports = grammar({
         $.annotation,
       ),
 
-    type_name: ($) =>  /[A-Z][a-zA-Z0-9_\-]*/,
+    type_name: ($) =>  TYPE,
     identifier: ($) => IDENT,
     explicit_type: ($) => seq($.identifier, "::"),
     keyword_send: ($) => prec(1, choice(
-      seq(IDENT, token.immediate(":")),          // identifier:
-      seq(":", token.immediate(IDENT)),          // :identifier
+      seq($.identifier, token.immediate(":")),                      // word:
+      seq(":", token.immediate(IDENT)),                              // :word
+      seq(":", token.immediate(TYPE)),             // :Word
     )),
     annotation: ($) => seq("@", $.identifier),
 
