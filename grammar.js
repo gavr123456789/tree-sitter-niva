@@ -40,14 +40,18 @@ module.exports = grammar({
         $.annotation,
       ),
 
-    type_name: ($) =>  TYPE,
+    type_name: ($) => TYPE,
     identifier: ($) => IDENT,
     explicit_type: ($) => seq($.identifier, "::"),
-    keyword_send: ($) => prec(1, choice(
-      seq($.identifier, token.immediate(":")),                      // word:
-      seq(":", token.immediate(IDENT)),                              // :word
-      seq(":", token.immediate(TYPE)),             // :Word
-    )),
+    keyword_send: ($) =>
+      prec(
+        1,
+        choice(
+          seq($.identifier, token.immediate(":")), // word:
+          seq(":", token.immediate(IDENT)), // :word
+          seq(":", token.immediate(TYPE)), // :Word
+        ),
+      ),
     annotation: ($) => seq("@", $.identifier),
 
     operator: ($) =>
@@ -67,20 +71,7 @@ module.exports = grammar({
         ".",
       ),
     control_flow: ($) =>
-      choice(
-        "<-",
-        "|",
-        "|=>",
-        "=>",
-        "|>",
-        ",",
-        ";",
-        "?",
-        "!",
-        "^",
-        "&&",
-        "||",
-      ),
+      choice("<-", "|", "|=>", "=>", "|>", ",", ";", "?", "!", "^", "&&", "||"),
 
     keywords: ($) =>
       choice(
@@ -120,7 +111,20 @@ module.exports = grammar({
     string: ($) => /"[^"]*"/,
     char: ($) => /'[^']*'/,
     // multi_string: ($) => /""".*?"""/,
-    multi_string: ($) => /"""[\s\S]*?"""/,
+    multi_string: ($) =>
+      token(
+        seq(
+          '"""',
+          repeat(
+            choice(
+              /[^"]/, // any not "
+              /"[^"]/, // single " + not-"
+              /""[^"]/, // double "" + not-"
+            ),
+          ),
+          '"""',
+        ),
+      ),
     comment: ($) => /\/\/.*/,
     doc_comment: ($) => /\/\/\/.*/,
   },
