@@ -108,8 +108,32 @@ module.exports = grammar({
     double: ($) => /\d+\.\d+/,
     float: ($) => /\d+\.\d+f/,
 
-    string: ($) => /"[^"]*"/,
-    char: ($) => /'[^']*'/,
+    string: ($) =>
+      token(
+        seq(
+          '"',
+          repeat(
+            choice(
+              /[^"\\\n]/, // обычные символы, кроме ", \ и перевода строки
+              /\\./, // escape: \", \\ , \n, \t и т.д.
+            ),
+          ),
+          '"',
+        ),
+      ),
+
+    char: ($) =>
+      token(
+        seq(
+          "'",
+          choice(
+            /[^'\\\n]/, // один обычный символ
+            /\\./, // либо escape
+          ),
+          "'",
+        ),
+      ),
+
     // multi_string: ($) => /""".*?"""/,
     multi_string: ($) =>
       token(
