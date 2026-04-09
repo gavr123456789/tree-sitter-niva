@@ -93,6 +93,8 @@ module.exports = grammar({
         "on",
         "extend",
         "fun",
+        "static",
+        "global",
       ),
 
     block: ($) =>
