@@ -389,6 +389,14 @@
         {
           "type": "STRING",
           "value": "fun"
+        },
+        {
+          "type": "STRING",
+          "value": "static"
+        },
+        {
+          "type": "STRING",
+          "value": "global"
         }
       ]
     },
