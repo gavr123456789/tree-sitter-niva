@@ -395,6 +395,10 @@
     "named": false
   },
   {
+    "type": "global",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -420,6 +424,10 @@
   },
   {
     "type": "on",
+    "named": false
+  },
+  {
+    "type": "static",
     "named": false
   },
   {
